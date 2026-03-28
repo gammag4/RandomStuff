@@ -1,0 +1,351 @@
+com.contrat.resourceFragments
+
+EstrelaFragment : ResourceFragment
+	imagemEstrelaVazia: Image
+	imagemEstrelaCheia: Image
+	avaliacao: int
+	onAvaliacaoChangeListener: IAction<Int>
+
+	EstrelaFragment()
+	getAvaliacao(): int
+	setAvaliacao(avaliacao: int): void
+	setOnAvaliacaoChangeListener(listener: IAction<Int>): void
+	-onClick(): void
+
+AvaliacaoMediaFragment : ResourceFragment
+	imagemEstrelaVazia: Image
+	imagemEstrelaCheia: Image
+	avaliacaoText: TextFragment
+	avaliacao: float
+
+	AvaliacaoMediaFragment()
+	getAvaliacao(): float
+	setAvaliacao(avaliacao: float): void
+
+AvaliacaoEstrelasFragment : ResourceFragment
+	estrelas: List<EstrelaFragment>
+	onAvaliacaoChangeListener: IAction<Int>
+
+	AvaliacaoEstrelasFragment()
+	getAvaliacao(): int
+	setAvaliacao(avaliacao: int): void
+	setOnAvaliacaoChangeListener(listener: IAction<Int>): void
+	-onEstrelaClick(estrelaIndex: int, avaliacaoEstrela: int): void
+	-onClick(): void
+
+AvaliacaoCompletaFragment : ResourceFragment
+	avaliacaoMedia: AvaliacaoMediaFragment
+	numeroAvaliacoesText: TextFragment
+	textoAvaliacao: String
+
+	AvaliacaoCompletaFragment()
+	getAvaliacao(): float
+	setAvaliacao(avaliacao: float): void
+	getNumeroAvaliacoes(): int
+	setNumeroAvaliacoes(numeroAvaliacoes: int): void
+	getTextoAvaliacao(): String
+	setTextoAvaliacao(textoAvaliacao: String): void
+
+AvaliacaoDetalhesFragment : ResourceFragment
+	nomeText: TextFragment
+	dataText: TextFragment
+	data: Date
+	avaliacaoFragment: AvaliacaoEstrelasFragment
+	descricaoText: TextFragment
+	imagemFragment: ImageFragment
+
+	AvaliacaoDetalhesFragment()
+	getNome(): String
+	setNome(nome: String): void
+	getData(): Date
+	setData(data: Date): void
+	getAvaliacao(): int
+	setAvaliacao(avaliacao: int): void
+	getDescricao(): String
+	setDescricao(descricao: String): void
+	getImagem(): Image
+	setImagem(imagem: Image): void
+
+AvaliacaoUsuarioFragment : ResourceFragment
+	tituloText: TextFragment
+	descricaoText: TextFragment
+	avaliacaoFragment: AvaliacaoEstrelasFragment
+	dataText: TextFragment
+	data: Date
+	
+	AvaliacaoUsuarioFragment()
+	getTitulo(): String
+	setTitulo(titulo: String): void
+	getDescricao(): String
+	setDescricao(descricao: String): void
+	getAvaliacao(): int
+	setAvaliacao(avaliacao: int): void
+	getData(): Date
+	setData(data: Date): void
+
+AvaliacaoServicoFragment : ResourceFragment
+	avaliacaoCliente: AvaliacaoUsuarioFragment
+	avaliacaoPrestador: AvaliacaoUsuarioFragment
+	dataText: TextFragment
+	dataServico: Date
+
+	AvaliacaoServicoFragment()
+	getAvaliacaoCliente(): int
+	getDescrucaoAvaliacaoCliente(): String
+	getDataAvaliacaoCliente(): Date
+	setAvaliacaoCliente(avaliacao: int, descricao: String, data: Date): void
+	getAvaliacaoPrestador(): int
+	getDescricaoAvaliacaoPrestador(): String
+	getDataAvaliacaoPrestador(): Date
+	setAvaliacaoPrestador(avaliacao: int, descricao: String, data: Date): void
+	getDataServico(): Date
+	setDataServico(data: Date): void
+
+CartaoFragment : ResourceFragment
+	numeroText: TextFragment
+	titularText: TextFragment
+	vencimentoText: TextFragment
+	vencimento: Date
+	deleteButton: ButtonIconFragment
+
+	CartaoFragment()
+	getNumero(): String
+	setNumero(numero: String): void
+	getTitular(): String
+	setTitular(titular: String): void
+	getVencimento(): Date
+	setVencimento(vencimento: Date): void
+	setOnDeleteListener(listener: IActionVoid): void
+
+ServicoPreviewFragment : ResourceFragment
+	tituloText: TextFragment
+	detalhesText: TextFragment
+	avaliacaoFragment: AvaliacaoCompletaFragment
+	imagemFragment: ImageFragment
+	tags: TagListFragment
+
+	ServicoPreviewFragment()
+	getTitulo(): String
+	setTitulo(titulo: String): void
+	getDetalhes(): String
+	setDetalhes(detalhes: String): void
+	getAvaliacao(): float
+	setAvaliacao(avaliacao: float): void
+	getNumeroAvaliacoes(): int
+	setNumeroAvaliacoes(numeroAvaliacoes: int): void
+	getImagem(): Image
+	setImagem(imagem: Image): void
+	getTags(): List<String>
+	setTags(tags: List<String>): void
+
+PerfilPreviewFragment : ResourceFragment
+	nomeText: TextFragment
+	avaliacaoFragment: AvaliacaoCompletaFragment
+	numeroAvaliacoes: int
+	imagemFragment: ImageFragment
+
+	PerfilPreviewFragment()
+	getNome(): String
+	setNome(nome: String): void
+	getAvaliacao(): float
+	setAvaliacao(avaliacao: float): void
+	getNumeroAvaliacoes(): int
+	setNumeroAvaliacoes(numeroAvaliacoes: int): void
+	getImagem(): Image
+	setImagem(imagem: Image): void
+
+NotificacaoPreviewFragment : ResourceFragment
+	tituloText: TextFragment
+	topicoText: TextFragment
+	descricaoText: TextFragment
+	conclusaoText: TextFragment
+	eRejeicao: boolean
+	dataText: TextFragment
+	data: Date
+
+	NotificacaoPreviewFragment()
+	getTitulo(): String
+	setTitulo(titulo: String): void
+	getTopico(): String
+	setTopico(topico: String): void
+	getDescricao(): String
+	setDescricao(descricao: String): void
+	getConclusao(): String
+	setConclusao(conclusao: String): void
+	getERejeicao(): boolean
+	setERejeicao(eRejeicao: boolean): void
+	getData(): Date
+	setData(data: Date): void
+
+LabelFragment : ResourceFragment
+	text: TextFragment
+	textEdit: TextEditFragment
+	editable: boolean
+	editButton: ButtonIconFragment
+
+	LabelFragment()
+	getText(): String
+	setText(text: String): void
+	getEditable(): boolean
+	setEditable(editable: boolean): void
+	setOnTextChangedListener(listener: IAction<String>): void
+
+PrecoFragment : ResourceFragment
+	textEdit: TextEditFragment
+	preco: BigDecimal
+	onPrecoChangedListener: IAction<BigDecimal>
+
+	PrecoFragment()
+	getPreco(): BigDecimal
+	setPreco(preco: BigDecimal): void
+	setOnPrecoChangedListener(listener: IAction<BigDecimal>): void
+	-onTextChanged(text: String): void
+
+ListaPrecosFragment : ResourceFragment
+	precos: List<LabelFragment>
+	onListaPrecosChangedListener: IAction<List<String>>
+
+	ListaPrecosFragment()
+	getPrecos(): List<String>
+	setPrecos(text: List<String>): void
+	getEditable(): boolean
+	setEditable(editable: boolean): void
+	setOnListaPrecosChangedListener(listener: IAction<List<String>>): void
+	-onTextChanged(text: String): void
+
+LocalFragment : ResourceFragment
+	label: LabelFragment
+	icon: ImageFragment
+
+	LocalFragment()
+	getEndereco(): String
+	setEndereco(endereco: String): void
+	getEditable(): boolean
+	setEditable(editable: boolean): void
+	setOnEnderecoChangedListener(listener: IAction<String>): void
+
+PesquisaFragment : ResourceFragment
+	textEdit: TextEditFragment
+	iconPesquisa: ImageFragment
+
+	PesquisaFragment()
+	getPesquisa(): String
+	setPesquisa(pesquisa: String): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+
+TopBarFragment : ResourceFragment
+	fotoPerfil: ImageFragment
+	pesquisaFragment: PesquisaFragment
+
+	TopBarFragment()
+	getFotoPerfil(): Image
+	setFotoPerfil(fotoPerfil: Image): void
+	getPesquisa(): String
+	setPesquisa(pesquisa: String): void
+	setOnPerfilClickListener(listener: IActionVoid): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+
+CheckboxFragment : ResourceFragment
+	checkboxImage: ImageFragment
+	checked: boolean
+	onCheckedChangedListener: IAction<Boolean>
+
+	CheckboxFragment()
+	getChecked(): boolean
+	setChecked(checked: boolean): void
+	setOnCheckedChangedListener(listener: IAction<Boolean>): void
+
+AddButtonFragment : ResourceFragment
+	buttonFragment: ButtonIconFragment
+
+	AddButtonFragment()
+
+ConfiguracoesButtonFragment : ResourceFragment
+	buttonFragment: ButtonIconFragment
+
+	ConfiguracoesButtonFragment()
+
+NotificacaoButtonFragment : ResourceFragment
+	buttonFragment: ButtonIconFragment
+	numeroNotificacoes: int
+
+	NotificacaoButtonFragment()
+	getNumeroNotificacoes(): int
+	setNumeroNotificacoes(numeroNotificacoes: int): void
+
+TagFragment : ResourceFragment
+	textFragment: TextFragment
+
+	TagFragment()
+	getTag(): String
+	setTag(tag: String): void
+
+TagListFragment : ResourceFragment
+	tags: List<TagFragment>
+
+	TagListFragment()
+	getTags(): List<String>
+	setTags(tags: List<String>): void
+
+EditableTagFragment : ResourceFragment
+	text: LabelFragment
+	removeTagButton: ButtonIconFragment
+
+	RemovableTagFragment()
+	getTag(): String
+	setTag(tag: String): void
+	getEditable(): boolean
+	setEditable(editable: boolean): void
+	setOnRemoveTagListener(listener: IActionVoid): void
+
+EditableTagListFragment : ResourceFragment
+	tags: List<EditableTagFragment>
+	addButton: ButtonIconFragment
+
+	EditableTagListFragment()
+	getTags(): List<String>
+	setTags(tags: List<String>): void
+	addTag(tag: String): void
+	removeTag(tag: String): void
+	-onAddTag(): void
+	-onRemoveTag(index: int): void
+
+ImageEditFragment : ResourceFragment
+	image: ImageFragment
+	editButton: ButtonIconFragment
+
+	ImageEditFragment()
+	getImage(): Image
+	setImage(image: Image): void
+	setOnEditListener(listener: IAction<IAction<Image>>): void
+
+RemovableImageFragment : ResourceFragment
+	image: ImageEditFragment
+	removeButton: ButtonIconFragment
+
+	RemovableImageFragment()
+	getImage(): Image
+	setImage(image: Image): void
+	setOnEditListener(listener: IAction<IAction<Image>>): void
+	setOnRemoveListener(listener: IActionVoid): void
+
+ImageListFragment : ResourceFragment
+	images: List<ImageFragment>
+
+	ImageListFragment()
+	getImages(): List<Image>
+	setImages(images: List<Image>): void
+
+EditableImageListFragment : ResourceFragment
+	images: List<RemovableImageFragment>
+	addButton: ButtonIconFragment
+
+	EditableImageListFragment()
+	getImages(): List<Image>
+	setImages(images: List<Image>): void
+	addImage(image: Image): void
+	editImage(old: Image, new: Image): void
+	removeImage(image: Image): void
+	setOnEditImageListener(listener: IAction<IAction<Image>>): void
+	-onAddImage(): void
+	-onRemoveImage(index: int): void

@@ -1,0 +1,245 @@
+com.contrat.controllers
+
+TelaInicialController : Controller
+	view: TelaInicialView
+	imagemLogo: Image
+
+	TelaInicialController()
+
+LoginController : Controller
+	view: LoginView
+
+	LoginController()
+	-onCadastrar(): void
+	-onLogar(): void
+
+CadastrarController : Controller
+	view: CadastrarView
+
+	CadastrarController()
+	-validarCPF(cpf: String): void
+	-validarDataNasc(cpf: Date): void
+	-validarEmail(cpf: String): void
+	-validarSenha(cpf: String): void
+	-validarSenhaRepetida(cpf: String): void
+	-onLogar(): void
+	-onCadastrar(): void
+
+ListaServicosController : Controller
+	view: ListaServicosView
+	servicos: List<Servico>
+	paginaServicosAtual: int
+	
+	ListaServicosController()
+	-updatePesquisa(pesquisa: String): void
+	-goToPerfil(): void
+	-criarServico(): void
+	-goToNotificacoes(): void
+	-goToConfiguracoes(): void
+	-onScrollToBottom(): void
+	-goToServico(index: int): void
+
+EditarServicoController : Controller
+	view: EditarServicoView
+	servico: Servico
+
+	EditarServicoController()
+	-updatePesquisa(pesquisa: String): void
+	-goToPerfil(): void
+	-onSetImage(setImage: IAction<Image>): void
+	-updateTitulo(titulo: String): void
+	-updateImagem(imagem: Image): void
+	-updateTags(tags: List<String>): void
+	-updateImagensSecundarias(imagens: List<Image>): void
+	-updateDescricao(descricao: String): void
+	-updateConsideracoesSeguranca(consideracoes: String): void
+	-updatePrecos(precos: List<String>): void
+	-updateDisponivelParaSolicitar(disponivel: boolean): void
+	-goToHistoricoAvaliacoes(): void
+	-arquivar(): void
+	-goBack(): void
+
+CriarServicoController : Controller
+	view: CriarServicoView
+
+	CriarServicoController()
+	-updatePesquisa(pesquisa: String): void
+	-goToPerfil(): void
+	-onSetImage(setImage: IAction<Image>): void
+	-criarServico(): void
+	-goBack(): void
+
+ServicoController : Controller
+	view: ServicoView
+	servico: Servico
+	prestador: Usuario
+	pagamentoPendente: boolean
+
+	ServicoController()
+	-updatePesquisa(pesquisa: String): void
+	-goToPerfil(): void
+	-goToPrestador(): void
+	-goToHistoricoAvaliacoes(): void
+	-solicitar(): void
+	-goBack(): void
+
+NotificacoesController : Controller
+	view: NotificacoesView
+	listaNotificacoes: List<Notificacao>
+
+	NotificacoesController()
+	-onScrollToBottom(): void
+	-goBack(): void
+
+AvaliacoesController : Controller
+	view: AvaliacoesView
+	listaAvaliacoes: List<AvaliacaoServico>
+
+	AvaliacoesController()
+	-onScrollToBottom(): void
+	-goBack(): void
+
+CriarPerfilController : Controller
+	view: CriarPerfilView
+	perfil: UsuarioNovo
+
+	CriarPerfilController()
+	-onSetImage(setImage: IAction<Image>): void
+	-updateImagem(imagem: Image): void
+	-updateNome(nome: String): void
+	-criarPerfil(): void
+	-goBack(): void
+
+PerfilEditController : Controller
+	view: PerfilEditView
+	perfil: Usuario
+	servicosPrestados: List<Servico>
+	servicosArquivados: List<Servico>
+
+	PerfilEditController()
+	-onSetImage(setImage: IAction<Image>): void
+	-updateImagem(imagem: Image): void
+	-updateNome(nome: String): void
+	-goBack(): void
+
+PerfilController : Controller
+	view: PerfilView
+	perfil: Usuario
+	servicosPrestados: List<Servico>
+
+	PerfilController()
+	-goBack(): void
+
+ConfiguracoesPrestadorController : Controller
+	view: ConfiguracoesPrestadorView
+
+	ConfiguracoesPrestadorController()
+	-verEmail(): void
+	-alterarSenha(): void
+	-verMetodosPagamento(): void
+	-editarMetodoReceita(): void
+	-sairConta(): void
+	-deixarDeSerPrestador(): void
+	-excluirConta(): void
+	-goBack(): void
+
+ConfiguracoesClienteController : Controller
+	view: ConfiguracoesClienteView
+
+	ConfiguracoesClienteController()
+	-verEmail(): void
+	-alterarSenha(): void
+	-serPrestador(): void
+	-verMetodosPagamento(): void
+	-sairConta(): void
+	-excluirConta(): void
+	-goBack(): void
+
+EmailController : Controller
+	view: EmailView
+	conta: Conta
+
+	EmailController()
+	-validarEmail(email: String): void
+	-alterarEmail(): void
+	-goBack(): void
+
+AlterarSenhaController : Controller
+	view: AlterarSenhaView
+
+	AlterarSenhaController()
+	-validarSenha(senha: String): void
+	-validarSenhaRepetida(senha: String): void
+	-alterarSenha(): void
+	-goBack(): void
+
+MetodosPagamentoController : Controller
+	view: MetodosPagamentoView
+	metodosPagamento: List<Cartao>
+
+	MetodosPagamentoController()
+	-onAdicionarCartao(): void
+	-onRemoverCartao(index: int): void
+	-goBack(): void
+
+AdicionarMetodoPagamentoController : Controller
+	view: AdicionarMetodoPagamentoView
+
+	AdicionarMetodoPagamentoController()
+	-validarNumCartao(num: String): void
+	-validarDataVenc(data: Date): void
+	-adicionarCartao(): void
+	-goBack(): void
+
+MetodoReceitaController : Controller
+	view: MetodoReceitaView
+	conta: ContaBancaria
+
+	MetodoReceitaController()
+	-validarNumAgencia(num: String): void
+	-validarNumConta(num: String): void
+	-validarCPF(cpf: String): void
+	-removerMetodoReceita(): void
+	-editarMetodoReceita(): void
+	-goBack(): void
+
+CriarSolicitacaoController : Controller
+	view: CriarSolicitacaoView
+
+	CriarSolicitacaoController()
+	-fazerSolicitacao(): void
+	-goBack(): void
+
+SolicitacaoClienteController : Controller
+	view: SolicitacaoClienteView
+	solicitacao: SolicitacaoEfetuada
+	servico: Servico
+
+	SolicitacaoClienteController()
+	-cancel(): void
+	-submit(): void
+	-alterarDados(): void
+	-avaliarServico(): void
+	-goBack(): void
+
+SolicitacaoPrestadorController : Controller
+	view: SolicitacaoPrestadorView
+	solicitacao: SolicitacaoEfetuada
+	servico: Servico
+	cliente: Usuario
+
+	SolicitacaoPrestadorController()
+	-cancel(): void
+	-submit(): void
+	-definirPreco(preco: BigDecimal): void
+	-avaliarCliente(): void
+	-goBack(): void
+
+SolicitacaoCanceladaController : Controller
+	view: SolicitacaoCanceladaView
+	solicitacao: SolicitacaoCancelada
+	servico: Servico
+
+	SolicitacaoCanceladaController()
+	-removerNotificacao(): void
+	-goBack(): void

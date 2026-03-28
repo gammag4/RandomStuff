@@ -1,0 +1,73 @@
+com.contrat.framework
+
+IRunner
+	run(startController: Controller): void
+	goTo(newController: Controller): void
+	setContentView(view: View): void
+
+	getTokenManager(): ITokenManager
+	getContaProvider(): IContaProvider
+	getUsuarioProvider(): IUsuarioProvider
+	getServicoProvider(): IServicoProvider
+	getCartaoProvider(): ICartaoProvider
+	getContaBancariaProvider(): IContaBancariaProvider
+	getAvaliacaoProvider(): IAvaliacaoProvider
+	getSolicitacaoProvider(): ISolicitacaoProvider
+	getResourceProvider(): IResourceProvider
+
+abstract Controller
+	runner: IRunner
+
+	getRunner(): IRunner
+	setRunner(runner: IRunner): void
+	goTo(newController: Controller): void
+	setContentView(view: View): void
+	onCreate(): void
+	onDestroy(): void
+
+abstract Drawable
+	update(): void
+	draw(graphics: Graphics): void
+
+	abstract onCreate(): void
+	abstract onDestroy(): void
+
+abstract Fragment : Drawable
+	backgroundColor: Color
+	borderRadius: int
+	hidden: boolean
+	onClickListener: IActionVoid
+
+	Fragment()
+	getBackgroundColor(): Color
+	setBackgroundColor(color: Color): void
+	getBorderRadius(): int
+	setBorderRadius(radius: int): void
+	show(): void
+	hide(): void
+	setOnClickListener(listener: IActionVoid): void
+
+abstract View : Drawable
+	resourceProvider: IResourceProvider
+	backButton: ButtonFragment
+	onGoBackListener: IActionVoid
+
+	View()
+	override final onCreate(): void
+	onCreate(resourceProvider: IResourceProvider): void
+	getResourceProvider(): IResourceProvider
+	setOnGoBackListener(listener: IActionVoid): void
+
+abstract ResourceFragment : Fragment
+	resourceProvider: IResourceProvider
+
+	ResourceFragment()
+	override final onCreate(): void
+	onCreate(resourceProvider: IResourceProvider): void
+	getResourceProvider(): IResourceProvider
+
+IAction<T>
+	apply(value: T): void
+
+IActionVoid
+	apply(): void

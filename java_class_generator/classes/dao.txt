@@ -1,0 +1,86 @@
+com.contrat.dao
+
+ITokenManager
+	reusarTokenAnterior(onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	login(email: String, password: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	cadastrar(conta: ContaCadastro, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	sair(): void
+	getContaToken(): ContaToken
+
+IContaProvider
+	getConta(onSuccess: IAction<Conta>, onFailure: IAction<Exception>): void
+	updateEmail(novoEmail: String, senha: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	updateSenha(senhaAntiga: String, novaSenha: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	updateDataNascimento(novaData: Date, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	updateEstadoPrestador(ePrestador: boolean, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	excluirConta(senha: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+
+IUsuarioProvider
+	getUsuarioAtual(onSuccess: IAction<Usuario>, onFailure: IAction<Exception>): void
+	getUsuario(id: String, onSuccess: IAction<Usuario>, onFailure: IAction<Exception>): void
+	addUsuario(usuario: UsuarioNovo, onSuccess: IAction<Usuario>, onFailure: IAction<Exception>): void
+	updateUsuario(usuario: Usuario, onSuccess: IAction<Usuario>, onFailure: IAction<Exception>): void
+
+IServicoProvider
+	getServico(id: String, onSuccess: IAction<Servico>, onFailure: IAction<Exception>): void
+	addServico(servico: ServicoNovo, onSuccess: IAction<Servico>, onFailure: IAction<Exception>): void
+	updateServico(servico: Servico, onSuccess: IAction<Servico>, onFailure: IAction<Exception>): void
+	removeServico(id: String, onSuccess: IAction<Servico>, onFailure: IAction<Exception>): void
+	getPaginaPesquisaServico(pesquisa: String, pag: int, onSuccess: IAction<List<Servico>>, onFailure: IAction<Exception>): void
+	getServicosPrestados(prestadorId: String, onSuccess: IAction<List<Servico>>, onFailure: IAction<Exception>): void
+	getServicosArquivados(prestadorId: String, onSuccess: IAction<List<Servico>>, onFailure: IAction<Exception>): void
+
+ICartaoProvider
+	getCartao(id: String, onSuccess: IAction<Cartao>, onFailure: IAction<Exception>): void
+	addCartao(cartao: Cartao, onSuccess: IAction<Cartao>, onFailure: IAction<Exception>): void
+	removeCartao(id: String, onSuccess: IAction<Cartao>, onFailure: IAction<Exception>): void
+	getCartoesAdicionados(onSuccess: IAction<List<Cartao>>, onFailure: IAction<Exception>): void
+
+IContaBancariaProvider
+	getContaBancaria(onSuccess: IAction<ContaBancaria>, onFailure: IAction<Exception>): void
+	addContaBancaria(conta: ContaBancaria, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	updateContaBancaria(conta: ContaBancaria, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	removeContaBancaria(onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+
+IAvaliacaoProvider
+	getPaginaAvaliacoesUsuario(usuarioId: String, pag: int, onSuccess: IAction<List<AvaliacaoServico>>, onFailure: IAction<Exception>): void
+	getPaginaAvaliacoesServico(servicoId: String, pag: int, onSuccess: IAction<List<AvaliacaoServico>>, onFailure: IAction<Exception>): void
+	getAvaliacaoServico(id: String, onSuccess: IAction<AvaliacaoServico>, onFailure: IAction<Exception>): void
+
+ISolicitacaoProvider
+	solicitarServico(solicitacao: Solicitacao, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	getSolicitacao(solicitacaoId: String, onSuccess: IAction<SolicitacaoEfetuada>, onFailure: IAction<Exception>): void
+	getSolicitacaoRecusada(solicitacaoId: String, onSuccess: IAction<SolicitacaoRecusada>, onFailure: IAction<Exception>): void
+	atualizarDados(solicitacaoId: String, solicitacao: Solicitacao, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	cancelarSolicitacao(solicitacaoId: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	aceitarSolicitacao(solicitacaoId: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	recusarSolicitacao(solicitacaoId: String, motivo: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	cancelarSolicitacaoAceita(solicitacaoId: String, motivo: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	finalizarServicoSolicitado(solicitacaoId: String, preco: BigDecimal, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	pagarSolicitacao(solicitacaoId: String, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	avaliarCliente(solicitacaoId: String, avaliacao: int, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+	avaliarServico(solicitacaoId: String, avaliacao: int, onSuccess: IActionVoid, onFailure: IAction<Exception>): void
+
+IResourceProvider
+	getPesquisaIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getLocalizacaoIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getEditIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getDeleteIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getRemoveItemIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getAdicionarIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getConfiguracoesIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getNotificacoesIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getCheckboxIcon(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getFontePadrao(onSuccess: IAction<Font>, onFailure: IAction<Exception>): void
+	getAvaliacaoEstrelaCheiaImage(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+	getAvaliacaoEstrelaVaziaImage(onSuccess: IAction<Image>, onFailure: IAction<Exception>): void
+
+TokenManager : ITokenManager
+ContaProvider : IContaProvider
+UsuarioProvider : IUsuarioProvider
+ServicoProvider : IServicoProvider
+CartaoProvider : ICartaoProvider
+ContaBancariaProvider : IContaBancariaProvider
+AvaliacaoProvider : IAvaliacaoProvider
+ResourceProvider : IResourceProvider
+SolicitacaoProvider : ISolicitacaoProvider

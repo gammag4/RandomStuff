@@ -1,0 +1,65 @@
+com.contrat.fragments
+
+TextFragment : Fragment
+	text: String
+	font: Font
+	textColor: Color
+
+	TextFragment()
+	getText(): String
+	setText(text: String)
+	getFont(): Font
+	setFont(font: Font): void
+	getTextColor(): Color
+	setTextColor(color: Color): void
+
+TextEditFragment : Fragment
+	placeholder: String
+	text: String
+	font: Font
+	placeholderColor: Color
+	textColor: Color
+	onTextChangedListener: IAction<String>
+	multiline: boolean
+
+	TextEditFragment()
+	getPlaceholder(): String
+	setPlaceholder(placeholder: String): void
+	getText(): String
+	setText(text: String): void
+	getFont(): Font
+	setFont(font: Font): void
+	getTextColor(): Color
+	setTextColor(color: Color): void
+	getPlaceholderColor(): Color
+	setPlaceholderColor(color: Color): void
+	getMultiline(): boolean
+	setMultiline(multiline: boolean): void
+	setOnTextChangedListener(listener: IAction<String>): void
+	override setOnClickListener(listener: IActionVoid): void
+	-onClick(): void
+
+ButtonFragment : Fragment
+	textFragment: TextFragment
+
+	ButtonFragment()
+	getText(): String
+	setText(text: String): void
+	override setOnClickListener(listener: IActionVoid): void
+	-onClick(): void
+
+ImageFragment : Fragment
+	image: Image
+
+	ImageFragment()
+	getImage(): Image
+	setImage(image: Image): void
+
+ButtonIconFragment : Fragment
+	imageFragment: ImageFragment
+
+	ButtonIconFragment()
+	getImage(): Image
+	setImage(image: Image): void
+	override setOnClickListener(listener: IActionVoid): void
+	-onClick(): void

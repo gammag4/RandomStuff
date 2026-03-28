@@ -1,0 +1,126 @@
+com.contrat.dto
+
+ContaToken
+	email: String
+	token: String
+
+ContaCadastro
+	nome: String
+	email: String
+	cpf: String
+	dataNascimento: Date
+	senha: String
+
+Conta
+	id: String // mesmo id do usuario
+	email: String
+	cpf: String
+	dataNascimento: Date
+
+Usuario
+	id: String // mesmo id da conta
+	nome: String
+	imagem: Image
+	ePrestador: boolean
+	avaliacaoCliente: AvaliacaoMedia
+	avaliacaoPrestador: AvaliacaoMedia
+
+UsuarioNovo
+	nome: String
+	imagem: Image
+
+ServicoNovo
+	nome: String
+	descricao: String
+	consideracoesSeguranca: String // can be empty
+	precos: List<String>
+	tags: List<String> // can be empty
+	imagemPrincipal: Image
+	imagensExtras: List<Image> // can be empty
+
+Servico
+	id: String // can be empty
+	nome: String
+	descricao: String
+	consideracoesSeguranca: String // can be empty
+	precos: List<String>
+	tags: List<String> // can be empty
+	imagemPrincipal: Image
+	imagensExtras: List<Image> // can be empty
+	disponivelParaSolicitar: boolean
+	arquivado: boolean
+	avaliacao: AvaliacaoMedia
+	prestadorId: String
+
+Notificacao
+	id: String // can be empty
+	titulo: String
+	topico: String
+	descricao: String // can be empty
+	conclusao: String // can be empty
+	eRejeicao: boolean
+	data: Date
+
+AvaliacaoMedia
+	valor: float
+	numAvaliacoes: int
+
+AvaliacaoDetalhes
+	detalhes: String // can be empty
+	valor: int
+	data: Date
+	avaliadorId: String
+
+AvaliacaoServico
+	id: String
+	avaliacaoCliente: AvaliacaoDetalhes // can be null
+	avaliacaoPrestador: AvaliacaoDetalhes // can be null
+	dataServico: Date
+	servicoId: String
+
+CartaoNovo
+	nomeTitular: String
+	digitos: String
+	validade: Date
+	codigoSeguranca: int
+
+Cartao
+	id: String
+	usuarioId: String
+	nomeTitular: String
+	digitos: String
+	validade: Date
+
+ContaBancaria
+	agencia: String
+	conta: String
+	cpfTitular: String
+	nomeTitular: String
+
+Solicitacao
+	servicoId: String
+	data: Date
+	local: String
+
+SolicitacaoEfetuada
+	id: String
+	solicitacao: Solicitacao
+	avaliacaoCliente: int
+	avaliacaoPrestador: int
+	preco: BigDecimal
+	state: SolicitacaoState
+
+SolicitacaoCancelada
+	id: String
+	solicitacao: Solicitacao
+	motivo: String
+	state: SolicitacaoState
+
+ENUMSolicitacaoState
+	Criada
+	Aceita
+	PagamentoPendente
+	Concluida
+	Recusada
+	CanceladaPorCliente
+	CanceladaPorPrestador

@@ -1,2 +1,3 @@
 # RandomStuff
-Random code, snippets, and other stuff
+
+Random code, snippets, tests, and other stuff I played with.

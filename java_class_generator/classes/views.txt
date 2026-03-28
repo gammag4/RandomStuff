@@ -1,0 +1,599 @@
+com.contrat.views
+
+abstract ScrollableView : View
+	onScrollToBottomListener: IActionVoid
+
+	ScrollableView()
+	setOnScrollToBottomListener(listener: IActionVoid): void
+
+TelaInicialView : View
+	imagemLogo: Image
+
+	TelaInicialView()
+	setImagemLogo(image: Image): void
+
+LoginView : View
+	loginText: TextFragment
+	emailInput: TextEditFragment
+	senhaInput: TextEditFragment
+	cadastrarButton: ButtonFragment
+	logarButton: ButtonFragment
+
+	LoginView()
+	getEmail(): String
+	getSenha(): String
+	setOnCadastrarListener(listener: IActionVoid): void
+	setOnLogarListener(listener: IActionVoid): void
+
+CadastrarView : View
+	cadastrarText: TextFragment
+	nomeInput: TextEditFragment
+	cpfInput: TextEditFragment
+	validarCPFText: TextFragment
+	dataNascInput: TextEditFragment
+	validarDataNascText: TextFragment
+	emailInput: TextEditFragment
+	validarEmailText: TextFragment
+	senhaInput: TextEditFragment
+	validarSenhaText: TextFragment
+	senhaRepetidaInput: TextEditFragment
+	validarSenhaRepetidaText: TextFragment
+	logarButton: ButtonFragment
+	cadastrarButton: ButtonFragment
+
+	CadastrarView()
+	getNome(): String
+	getCPF(): String
+	getDataNasc(): String
+	getEmail(): String
+	getSenha(): String
+	setValidarCPFText(text: String): void
+	setValidarDataNascText(text: String): void
+	setValidarEmailText(text: String): void
+	setValidarSenhaText(text: String): void
+	setValidarSenhaRepetidaText(text: String): void
+	setOnCPFChangedListener(listener: IAction<String>): void
+	setOnDataNascChangedListener(listener: IAction<Date>): void
+	setOnEmailChangedListener(listener: IAction<String>): void
+	setOnSenhaChangedListener(listener: IAction<String>): void
+	setOnSenhaRepetidaChangedListener(listener: IAction<String>): void
+	setOnLogarListener(listener: IActionVoid): void
+	setOnCadastrarListener(listener: IActionVoid): void
+
+ListaServicosView : ScrollableView
+	topBar: TopBarFragment
+	ePrestador: boolean
+	servicos: List<ServicoPreviewFragment>
+	configsButton: ConfiguracoesButtonFragment
+	notificacoesButton: NotificacaoButtonFragment
+	criarServicoButton: AddButtonFragment
+
+	ListaServicosView()
+	setFotoPerfil(fotoPerfil: Image): void
+	setPesquisa(pesquisa: String): void
+	setEPrestador(ePrestador: boolean): void
+	setServicos(servicos: List<ServicoPreviewFragment>): void
+
+	setOnPerfilClickListener(listener: IActionVoid): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+	setOnVerConfiguracoesListener(listener: IActionVoid): void
+	setOnVerNotificacoesListener(listener: IActionVoid): void
+	setOnCriarServicoListener(listener: IActionVoid): void
+
+EditarServicoView : View
+	topBar: TopBarFragment
+	titulo: LabelFragment
+	imagem: ImageEditFragment
+	avaliacao: AvaliacaoCompletaFragment
+	tags: EditableTagListFragment
+	imagensExtras: EditableImageListFragment
+	descricao: LabelFragment
+	consideracoesSegurancaTitulo: TextFragment
+	consideracoesSeguranca: LabelFragment
+	precosTitulo: TextFragment
+	precos: ListaPrecosFragment
+	disponivelParaSolicitar: CheckboxFragment
+	confirmarArquivarServicoPopup: ConfirmarPopup
+	historicoButton: ButtonFragment
+	arquivarButton: ButtonFragment
+
+	EditarServicoView()
+	setTitulo(titulo: String): void
+	setImagem(imagem: Image): void
+	setAvaliacao(avaliacao: float, numAvaliacoes: int): void
+	setTags(tags: List<String>): void
+	setImagensSecundarias(imagens: List<Image>): void
+	setDescricao(descricao: String): void
+	setConsideracoesSeguranca(consideracoes: String): void
+	setPrecos(precos: List<String>): void
+	setDisponivelParaSolicitar(disponivel: boolean): void
+
+	setOnPerfilClickListener(listener: IActionVoid): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+	setOnEditImageListener(listener: IAction<IAction<Image>>): void
+	setOnTituloChangedListener(listener: IAction<String>): void
+	setOnImagemPrincipalChangedListener(listener: IAction<Image>): void
+	setOnTagsChangedListener(listener: IAction<List<String>>): void
+	setOnImagensSecundariasChangedListener(listener: IAction<List<Image>>): void
+	setOnDescricaoChangedListener(listener: IAction<String>): void
+	setOnConsideracoesSegurancaChangedListener(listener: IAction<String>): void
+	setOnPrecosChangedListener(listener: IAction<List<String>>): void
+	setOnDisponivelParaSolicitarChangedListener(listener: IAction<Boolean>): void
+	setOnVerHistoricoListener(listener: IActionVoid): void
+	setOnArquivarListener(listener: IActionVoid): void
+
+CriarServicoView : View
+	topBar: TopBarFragment
+	titulo: LabelFragment
+	imagem: ImageEditFragment
+	tags: EditableTagListFragment
+	imagensExtras: EditableImageListFragment
+	descricao: LabelFragment
+	consideracoesSegurancaTitulo: TextFragment
+	consideracoesSeguranca: LabelFragment
+	precosTitulo: TextFragment
+	precos: ListaPrecosFragment
+	criarServicoButton: ButtonFragment
+	cancelarButton: ButtonFragment
+
+	CriarServicoView()
+	getTitulo(): String
+	getImagemPrincipal(): Image
+	getTags(): List<String>
+	getImagensSecundarias(): List<Image>
+	getDescricao(): String
+	getConsideracoesSeguranca(): String
+	getPrecos(): List<String>
+
+	setOnPerfilClickListener(listener: IActionVoid): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+	setOnEditImageListener(listener: IAction<IAction<Image>>): void
+	serOnCriarServicoListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+ServicoView : View
+	titulo: TextFragment
+	imagem: ImageFragment
+	avaliacao: AvaliacaoCompletaFragment
+	tags: TagListFragment
+	imagensExtras: ImageListFragment
+	descricao: TextFragment
+	consideracoesSegurancaTitulo: TextFragment
+	consideracoesSeguranca: TextFragment
+	precosTitulo: TextFragment
+	precos: ListaPrecosFragment
+	prestador: PerfilPreviewFragment
+	temPagamentoPendente: boolean
+	verHistoricoButton: ButtonFragment
+	solicitarButton: ButtonFragment
+	proibirSolicitacaoLabel: LabelFragment
+
+	ServicoView()
+	setTitulo(titulo: String): void
+	setImagem(imagem: Image): void
+	setAvaliacao(avaliacao: float, numAvaliacoes: int): void
+	setTags(tags: List<String>): void
+	setImagensSecundarias(imagens: List<Image>): void
+	setDescricao(descricao: String): void
+	setConsideracoesSeguranca(consideracoes: String): void
+	setPrecos(precos: List<String>): void
+	setPrestador(perfil: PerfilPreviewFragment): void
+	setTemPagamentoPendente(tem: boolean): void
+
+	setOnPerfilClickListener(listener: IActionVoid): void
+	setOnPesquisaChangedListener(listener: IAction<String>): void
+	setOnVerPrestadorListener(listener: IActionVoid): void
+	setOnVerHistoricoListener(listener: IActionVoid): void
+	setOnSolicitarListener(listener: IActionVoid): void
+
+NotificacoesView : ScrollableView
+	titulo: TextFragment
+	notificacoes: List<NotificacaoPreviewFragment>
+
+	NotificacoesView()
+	setNotificacoes(notificacoes: List<NotificacaoPreviewFragment>): void
+
+AvaliacoesView : ScrollableView
+	titulo: TextFragment
+	avaliacoes: List<AvaliacaoServicoFragment>
+
+	AvaliacoesView()
+	setAvaliacoes(avaliacoes: List<AvaliacaoServicoFragment>): void
+
+CriarPerfilView : View
+	imagemTitulo: TextFragment
+	imagem: ImageEditFragment
+	nome: LabelFragment
+	criarPerfilButton: ButtonFragment
+
+	CriarPerfilView()
+	setOnEditImageListener(listener: IAction<IAction<Image>>): void
+	setOnImagemChangeListener(listener: IAction<Image>): void
+	setOnNomeChangeListener(listener: IAction<String>): void
+	setOnCriarPerfilListener(listener: IActionVoid): void
+
+PerfilEditView : View
+	ePrestador: boolean
+	imagem: ImageEditFragment
+	nome: LabelFragment
+	avaliacaoClienteTitle: TextFragment
+	avaliacaoCliente: AvaliacaoCompletaFragment
+	avaliacaoPrestadorTitle: TextFragment
+	avaliacaoPrestador: AvaliacaoCompletaFragment
+	servicosPrestadosTitulo: TextFragment
+	servicosPrestados: List<ServicoPreviewFragment>
+	servicosArquivadosTitulo: TextFragment
+	servicosArquivados: List<ServicoPreviewFragment>
+
+	PerfilEditView()
+	setEPrestador(ePrestador: boolean): void
+	setImagem(imagem: Image): void
+	setNome(nome: String): void
+	setAvaliacaoCliente(avaliacao: float, numAvaliacoes: int): void
+	setAvaliacaoPrestador(avaliacao: float, numAvaliacoes: int): void
+	setServicosPrestados(servicos: List<ServicoPreviewFragment>): void
+	setServicosArquivados(servicos: List<ServicoPreviewFragment>): void
+
+	setOnEditImageListener(listener: IAction<IAction<Image>>): void
+	setOnImagemChangeListener(listener: IAction<Image>): void
+	setOnNomeChangeListener(listener: IAction<String>): void
+
+PerfilView : View
+	ePrestador: boolean
+	imagem: ImageFragment
+	nome: TextFragment
+	avaliacaoClienteTitle: TextFragment
+	avaliacaoCliente: AvaliacaoCompletaFragment
+	avaliacaoPrestadorTitle: TextFragment
+	avaliacaoPrestador: AvaliacaoCompletaFragment
+	servicosPrestadosTitulo: TextFragment
+	servicosPrestados: List<ServicoPreviewFragment>
+	servicosArquivadosTitulo: TextFragment
+	servicosArquivados: List<ServicoPreviewFragment>
+
+	PerfilView()
+	setEPrestador(ePrestador: boolean): void
+	setImagem(imagem: Image): void
+	setNome(nome: String): void
+	setAvaliacaoCliente(avaliacao: float, numAvaliacoes: int): void
+	setAvaliacaoPrestador(avaliacao: float, numAvaliacoes: int): void
+	setServicosPrestados(servicos: List<ServicoPreviewFragment>): void
+	setServicosArquivados(servicos: List<ServicoPreviewFragment>): void
+
+ConfiguracoesPrestadorView : View
+	confirmarExcluirContaPopup: ConfirmarTextEditPopup
+	confirmarDeixarDeSerPrestadorPopup: ConfirmarPopup
+	verEmailButton: ButtonFragment
+	alterarSenhaButton: ButtonFragment
+	verMetodosPagamentoButton: ButtonFragment
+	editarMetodoReceitaButton: ButtonFragment
+	sairContaButton: ButtonFragment
+	deixarSerPrestadorButton: ButtonFragment
+	excluirContaButton: ButtonFragment
+
+	ConfiguracoesPrestadorView()
+	setOnVerEmailListener(listener: IActionVoid): void
+	setOnAlterarSenhaListener(listener: IActionVoid): void
+	setOnVerMetodosPagamentoListener(listener: IActionVoid): void
+	setOnEditarMetodoReceitaListener(listener: IActionVoid): void
+	setOnSairContaListener(listener: IActionVoid): void
+	setOnDeixarSerPrestadorListener(listener: IActionVoid): void
+	setOnExcluirContaListener(listener: IActionVoid): void
+
+ConfiguracoesClienteView : View
+	confirmarExcluirContaPopup: ConfirmarTextEditPopup
+	verEmailButton: ButtonFragment
+	alterarSenhaButton: ButtonFragment
+	serPrestadorButton: ButtonFragment
+	verMetodosPagamentoButton: ButtonFragment
+	sairContaButton: ButtonFragment
+	excluirContaButton: ButtonFragment
+
+	ConfiguracoesClienteView()
+	setOnVerEmailListener(listener: IActionVoid): void
+	setOnAlterarSenhaListener(listener: IActionVoid): void
+	setOnSerPrestadorListener(listener: IActionVoid): void
+	setOnVerMetodosPagamentoListener(listener: IActionVoid): void
+	setOnSairContaListener(listener: IActionVoid): void
+	setOnExcluirContaListener(listener: IActionVoid): void
+
+EmailView : View
+	titulo: TextFragment
+	emailTitulo: TextFragment
+	emailText: LabelFragment
+	alterarEmailTitulo: TextFragment
+	novoEmailText: TextEditFragment
+	validarEmailText: TextFragment
+	senhaText: TextEditFragment
+	voltarButton: ButtonFragment
+	confirmarButton: ButtonFragment
+
+	EmailView()
+	getEmail(): String
+	getSenha(): String
+	setValidarEmailText(text: String): void
+	setOnEmailChangedListener(listener: IAction<String>): void
+	setOnConfirmarListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+AlterarSenhaView : View
+	titulo: TextFragment
+	senhaAntigaText: TextEditFragment
+	novaSenhaText: TextEditFragment
+	validarSenhaText: TextFragment
+	repetirSenhaText: TextEditFragment
+	validarSenhaRepetidaText: TextFragment
+	cancelarButton: ButtonFragment
+	confirmarButton: ButtonFragment
+
+	AlterarSenhaView()
+	getSenhaAntiga(): String
+	getNovaSenha(): String
+	getNovaSenhaRepetida(): String
+	setValidarSenhaText(text: String): void
+	setValidarSenhaRepetidaText(text: String): void
+	setOnNovaSenhaChangedListener(listener: IAction<String>): void
+	setOnNovaSenhaRepetidaChangedListener(listener: IAction<String>): void
+	setOnConfirmarListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+MetodosPagamentoView : View
+	titulo: TextFragment
+	metodos: List<CartaoFragment>
+	confirmarRemoverCartaoPopup: ConfirmarPopup
+	adicionarButton: ButtonFragment
+	voltarButton: ButtonFragment
+
+	MetodosPagamentoView()
+	setMetodosPagamento(metodos: List<CartaoFragment>): void
+	setOnAdicionarListener(listener: IActionVoid): void
+	setOnRemoverCartaoListener(listener: IAction<Int>): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+AdicionarMetodoPagamentoView : View
+	titulo: TextFragment
+	numCartaoText: TextEditFragment
+	validarNumCartaoText: TextFragment
+	nomeTitularText: TextEditFragment
+	dataVencText: TextEditFragment
+	validarDataVencText: TextFragment
+	codigoSegurancaText: TextEditFragment
+	cancelarButton: ButtonFragment
+	adicionarButton: ButtonFragment
+
+	AdicionarMetodoPagamentoView()
+	getNumCartao(): String
+	getNomeTitular(): String
+	getDataVenc(): Date
+	getCodigoSeguranca(): String
+	setValidarNumCartaoText(text: String): void
+	setValidarDataVencText(text: String): void
+	setOnNumCartaoChangedListener(listener: IAction<String>): void
+	setOnDataVencChangedListener(listener: IAction<Date>): void
+	setOnAdicionarListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+MetodoReceitaView : View
+	tituloText: TextFragment
+	numAgenciaTitulo: TextFragment
+	numAgenciaText: TextEditFragment
+	validarNumAgenciaText: TextFragment
+	numContaTitulo: TextFragment
+	numContaText: TextEditFragment
+	validarNumContaText: TextFragment
+	cpfTitulo: TextFragment
+	cpfText: TextEditFragment
+	validarCPFText: TextFragment
+	nomeTitularTitulo: TextFragment
+	nomeTitularText: TextEditFragment
+	cancelarButton: ButtonFragment
+	removerMetodoButton: ButtonFragment
+	confirmarButton: ButtonFragment
+	editando: boolean
+
+	MetodoReceitaView()
+	getNumAgencia(): String
+	setNumAgencia(numAgencia: String): void
+	getNumConta(): String
+	setNumConta(numConta: String): void
+	getCPF(): String
+	setCPF(cpf: String): void
+	getNomeTitular(): String
+	setNomeTitular(nomeTitular: String): void
+	setEditando(editando: boolean): void
+	setValidarNumAgenciaText(text: String): void
+	setValidarNumContaText(text: String): void
+	setValidarCPFText(text: String): void
+	setOnNumAgenciaChangedListener(listener: IAction<String>): void
+	setOnNumContaChangedListener(listener: IAction<String>): void
+	setOnCPFChangedListener(listener: IAction<String>): void
+	setOnRemoverMetodoListener(listener: IActionVoid): void
+	setOnConfirmarListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+CriarSolicitacaoView : View
+	titulo: TextFragment
+	tituloServico: TextFragment
+	servico: ServicoPreviewFragment
+	dataPrestacaoTitulo: TextFragment
+	dataPrestacao: LabelFragment
+	localPrestacaoTitulo: TextFragment
+	localPrestacao: LocalFragment
+	cancelButton: ButtonFragment
+	solicitarButton: ButtonFragment
+
+	CriarSolicitacaoView()
+	setServico(servico: ServicoPreviewFragment): void
+	getData(): Data
+	getLocal(): String
+	setOnSolicitarListener(listener: IActionVoid): void
+	override setOnGoBackListener(listener: IActionVoid): void
+
+SolicitacaoClienteView : View
+	titulo: TextFragment
+	tituloServico: TextFragment
+	servico: ServicoPreviewFragment
+	dataPrestacaoTitulo: TextFragment
+	dataPrestacao: LabelFragment
+	localPrestacaoTitulo: TextFragment
+	localPrestacao: LocalFragment
+	precoTitulo: TextFragment
+	preco: LabelFragment
+	servicoPago: LabelFragment
+	servicoAvaliado: boolean
+	falhaPagamento: boolean
+	state: SolicitacaoState
+	alterarDadosButton: ButtonFragment
+	avaliarServicoPopup: AvaliarPopup
+	avaliacaoServicoPopup: AvaliacaoPreviewPopup
+	confirmarCancelarSolicitacaoPopup: ConfirmarPopup
+	confirmarCancelarServicoPopup: ConfirmarTextEditPopup
+	cancelButton: ButtonFragment
+	submitButton: ButtonFragment
+
+	SolicitacaoClienteView()
+	setServico(servico: ServicoPreviewFragment): void
+	setDataPrestacao(data: Date): void
+	setLocalPrestacao(local: String): void
+	setPrecoTotal(preco: String): void
+	setServicoPago(servicoPago: boolean): void
+	setServicoAvaliado(servicoAvaliado: boolean): void
+	setFalhaPagamento(falhaPagamento: boolean): void
+	setSolicitacaoState(state: SolicitacaoState): void
+	getAvaliacaoServico(): int
+	getDetalhesAvaliacaoServico(): String
+	getDetalhesCancelamento(): String
+	setOnCancelListener(listener: IActionVoid): void
+	setOnSubmitListener(listener: IActionVoid): void
+	setOnAlterarDadosListener(listener: IActionVoid): void
+	setOnAvaliarServicoListener(listener: IActionVoid): void
+
+SolicitacaoPrestadorView : View
+	titulo: TextFragment
+	tituloServico: TextFragment
+	servico: ServicoPreviewFragment
+	tituloSolicitador: TextFragment
+	solicitador: PerfilPreviewFragment
+	dataPrestacaoTitulo: TextFragment
+	dataPrestacao: LabelFragment
+	localPrestacaoTitulo: TextFragment
+	localPrestacao: LocalFragment
+	precoTitulo: TextFragment
+	preco: LabelFragment
+	servicoPago: LabelFragment
+	clienteAvaliado: boolean
+	state: SolicitacaoState
+	avaliarClientePopup: AvaliarPopup
+	avaliacaoClientePopup: AvaliacaoPreviewPopup
+	definirPrecoServicoPopup: DefinirPrecoServicoPopup
+	confirmarCancelarServicoPopup: ConfirmarTextEditPopup
+	cancelButton: ButtonFragment
+	submitButton: ButtonFragment
+
+	SolicitacaoPrestadorView()
+	setServico(servico: ServicoPreviewFragment): void
+	setSolicitador(solicitador: PerfilPreviewFragment): void
+	setDataPrestacao(data: Date): void
+	setLocalPrestacao(local: String): void
+	setPrecoTotal(preco: String): void
+	setServicoPago(servicoPago: boolean): void
+	setClienteAvaliado(clienteAvaliado: boolean): void
+	setSolicitacaoState(state: SolicitacaoState): void
+	getAvaliacaoCliente(): int
+	getDetalhesAvaliacaoCliente(): String
+	getDetalhesCancelamento(): String
+	setOnCancelListener(listener: IActionVoid): void
+	setOnSubmitListener(listener: IActionVoid): void
+	setOnDefinirPrecoListener(listener: IAction<BigDecimal>): void
+	setOnAvaliarClienteListener(listener: IActionVoid): void
+
+SolicitacaoCanceladaView : View
+	titulo: TextFragment
+	tituloServico: TextFragment
+	servico: ServicoPreviewFragment
+	tituloSolicitador: TextFragment
+	solicitador: PerfilPreviewFragment
+	dataPrestacaoTitulo: TextFragment
+	dataPrestacao: LabelFragment
+	servicoCanceladoLabel: LabelFragment
+	state: SolicitacaoState
+	detalhesPopup: DetalhesPopup
+	verDetalhesButton: ButtonFragment
+	submitButton: ButtonFragment
+
+	SolicitacaoCanceladaView()
+	setServico(servico: ServicoPreviewFragment): void
+	setSolicitador(solicitador: PerfilPreviewFragment): void
+	setDataPrestacao(data: Date): void
+	setSolicitacaoState(state: SolicitacaoState): void
+	setDetalhesCancelamento(detalhes: String): void
+	setOnRemoverNotificacaoListener(listener: IActionVoid): void
+
+ConfirmarPopup : Fragment
+	titulo: TextFragment
+	detalhes: TextFragment
+	confirmarButton: ButtonFragment
+
+	ConfirmarPopup()
+	setTitulo(titulo: String): void
+	setDetalhes(detalhes: String): void
+	setOnConfirmarListener(listener: IActionListener): void
+
+ConfirmarTextEditPopup : Fragment
+	titulo: TextFragment
+	detalhes: TextFragment
+	textEdit: TextEditFragment
+	confirmarButton: ButtonFragment
+
+	ConfirmarTextEditPopup()
+	setTitulo(titulo: String): void
+	setDetalhes(detalhes: String): void
+	setMultilineTextEdit(multiline: boolean): void
+	setOnConfirmarListener(listener: IActionListener): void
+
+DetalhesPopup : Fragment
+	titulo: TextFragment
+	descricao: TextFragment
+	okButton: ButtonFragment
+
+	DetalhesFragment()
+	getTitulo(): String
+	setTitulo(titulo: String): void
+	getDescricao(): String
+	setDescricao(descricao: String): void
+	setOnOkClickListener(listener: IActionVoid): void
+
+AvaliarPopup : ResourceFragment
+	titulo: TextFragment
+	detalhes: TextEditFragment
+	avaliacao: AvaliacaoEstrelasFragment
+	submitButton: ButtonFragment
+
+	AvaliarFragment()
+	setTitulo(titulo: String): void
+	getDetalhes(): String
+	getAvaliacao(): int
+	setSubmitButtonText(text: String): void
+	setOnSubmitListener(listener: IActionVoid): void
+
+AvaliacaoPreviewPopup : ResourceFragment
+	titulo: TextFragment
+	avaliacao: AvaliacaoDetalhesFragment
+	okButton: ButtonFragment
+
+	AvaliacaoPreviewFragment()
+	setTitulo(titulo: String): void
+	setAvaliacao(avaliacao: AvaliacaoDetalhesFragment): void
+	setOkClickListener(listener: IActionVoid): void
+
+DefinirPrecoServicoPopup : ResourceFragment
+	titulo: TextFragment
+	preco: PrecoFragment
+	validarPrecoText: TextFragment
+	finalizarbutton: ButtonFragment
+
+	DefinirPrecoServicoPopup()
+	getPreco(): BigDecimal
+	setValidarPrecoText(text: String): void
+	setOnPrecoChangedListener(listener: IAction<String>): void
+	setOnFinalizarListener(listener: IActionVoid): void

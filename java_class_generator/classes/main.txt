@@ -1,0 +1,34 @@
+com.contrat
+
+ContratRunner : IRunner
+	tokenManager: TokenManager
+	contaProvider: ContaProvider
+	usuarioProvider: UsuarioProvider
+	servicoProvider: ServicoProvider
+	cartaoProvider: CartaoProvider
+	contaBancariaProvider: ContaBancariaProvider
+	avaliacaoProvider: AvaliacaoProvider
+	solicitacaoProvider: SolicitacaoProvider
+	resourceProvider: ResourceProvider
+
+	controller: Controller
+	view: View
+
+	main(args: String[]): void
+
+	Runner()
+	override run(startController: Controller): void
+	override goTo(newController: Controller): void
+	override setContentView(view: View): void
+	-update(): void
+	-draw(): void
+
+	override getTokenManager(): ITokenManager
+	override getContaProvider(): IContaProvider
+	override getUsuarioProvider(): IUsuarioProvider
+	override getServicoProvider(): IServicoProvider
+	override getCartaoProvider(): ICartaoProvider
+	override getContaBancariaProvider(): IContaBancariaProvider
+	override getAvaliacaoProvider(): IAvaliacaoProvider
+	override getSolicitacaoProvider(): ISolicitacaoProvider
+	override getResourceProvider(): IResourceProvider
