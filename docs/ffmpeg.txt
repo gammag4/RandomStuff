@@ -1,0 +1,20 @@
+
+get frame count with ffmpeg not ffprobe:
+ffmpeg -loglevel quiet -stats -i res/tmp/panoptic/160224_haggling1/hd/hd_00_01.mp4 -c:v copy -f null /dev/null 2>&1 | grep 'frame=' | cut -f 2 -d ' '
+
+break down into segments of size calculated_segment_time = n_frames_per_batch / avg_frame_rate
+ffmpeg -i input.mp4 -c copy -map 0 -f segment -segment_time $calculated_segment_time -reset_timestamps 1 output%03d.mp4
+
+avg_frame_rate
+ffprobe -v error -select_streams v:0 -show_entries stream=avg_frame_rate -of default=noprint_wrappers=1:nokey=1 http://domedb.perception.cs.cmu.edu/webdata/dataset/170307_dance3/videos/hd_shared_crf20/hd_00_04.mp4
+
+width,height,pix_fmt
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height,pix_fmt -of default=noprint_wrappers=1:nokey=1 "http://domedb.perception.cs.cmu.edu/webdata/dataset/170307_dance3/videos/hd_shared_crf20/hd_00_04.mp4"
+
+nb_read_frames,width,height,pix_fmt
+ffprobe -v error -select_streams v:0 -count_frames -show_entries stream=nb_read_frames,width,height,pix_fmt -of default=noprint_wrappers=1:nokey=1 "http://domedb.perception.cs.cmu.edu/webdata/dataset/170307_dance3/videos/hd_shared_crf20/hd_00_04.mp4"
+
+ffmpeg -hide_banner -pix_fmts | sed "1,/^-----/d" | grep -w "yuv420p"
+
+
+ffmpeg get number of frames, number of color channels, width and height from mp4 url without downoading
