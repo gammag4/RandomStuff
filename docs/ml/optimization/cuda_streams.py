@@ -1,4 +1,6 @@
 # CUDA streams
+# By default CUDA uses only a single main stream for all computations
+# But in some cases you want to send data and consume asynchronously in different streams
 
 import torch
 
