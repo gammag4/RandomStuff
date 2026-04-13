@@ -1,15 +1,12 @@
 # ROS2
 
-https://www.youtube.com/watch?v=HJAE5Pk8Nyw
-https://www.youtube.com/playlist?list=PLNw2RD-1J5YYvFGiMafRD_axHrBUGvuIg
-https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy
-https://www.youtube.com/playlist?list=PLunhqkrRNRhYYCaSTVP-qJnyUPkTxJnBt
-https://www.youtube.com/playlist?list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT
+[Learn ROS 2: Beginner to Advanced Course (Concepts and Code)](https://www.youtube.com/watch?v=HJAE5Pk8Nyw)
+[a](https://www.youtube.com/playlist?list=PLNw2RD-1J5YYvFGiMafRD_axHrBUGvuIg)
+[a](https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy)
+[a](https://www.youtube.com/playlist?list=PLunhqkrRNRhYYCaSTVP-qJnyUPkTxJnBt)
+[a](https://www.youtube.com/playlist?list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT)
 
-TODO check important stuff
-packages
-executables
-topics
+TODO check deploying/offline/how to use with real system
 
 ## Concepts
 
@@ -115,4 +112,86 @@ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "
 
 ## ROS Workspace
 
-https://youtu.be/HJAE5Pk8Nyw?si=0DGUpoM8il2RNUo4&t=1682
+```
+ros2_workspace_folder/
+    src/
+        package1/
+            src/
+            CMakeLists.txt
+            package.xml
+        package2/
+            src/
+            CMakeLists.txt
+            package.xml
+        ...
+```
+
+### colcon
+
+configuring colcon
+
+```bash
+# install colcon
+sudo apt install python3-colcon-common-extensions
+
+# configure colcon tab completion (choose bash or fish)
+#echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+#echo "bass source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.config/fish/config.fish
+```
+
+ready example
+
+```bash
+mkdir -p ros2_workspace_folder/src
+cd ros2_workspace_folder
+
+git clone https://github.com/ros/ros_tutorials -b jazzy
+
+# build current workspace with symlinks in source or build dirs instead of copying files (to allow editing/rebuilding workspace)
+# install python dependencies needed if errors happen
+colcon build --symlink-install
+bass source install/local_setup.bash
+```
+
+create custom packages/nodes
+
+```bash
+# create folders
+mkdir -p ros2_workspace_folder/src
+cd ros2_workspace_folder
+
+# create package (either python or cpp)
+cd src
+#ros2 pkg create --build-type ament_cmake --node-name my_node my_package
+#ros2 pkg create --build-type ament_python my_package
+cd ..
+
+# build stuff
+colcon build --packages-select my_package
+bass source install/local_setup.bash
+
+# Update code/cmakelists/package.xml
+
+# install deps
+rosdep install -i --from-path src --rosdistro jazzy -y
+
+# build
+colcon build --packages-select my_package
+
+# run stuff terminal
+bass source install/setup.bash
+ros2 run pubsub_example pub_example
+
+# run stuff terminal 2
+bass source install/setup.bash
+ros2 run pubsub_example sub_example
+```
+
+### launch files
+
+```bash
+# ros2 launch package_name launch_file_name.launch.py
+ros2 launch gazebo_tutorial gazebo.launch.py
+```
+
+https://youtu.be/HJAE5Pk8Nyw?t=2984
